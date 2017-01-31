@@ -10,6 +10,7 @@
     "@types/jest": "~16.0.4",
     "@types/node": "~6.0.62",
     "jest": "~18.1.0",
+    "must": "^0.13.4",
     "rimraf": "~2.5.4",
     "tslint": "~4.4.2",
     "tslint-microsoft-contrib": "~4.0.0",
