@@ -5,11 +5,11 @@
 import { curry } from 'ramda';
 import { List } from 'immutable';
 
-enum Color {
+export enum Color {
   Red, Green, Blue, Yellow,
 }
 
-enum Digit {
+export enum Digit {
   Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine
 }
 
@@ -18,27 +18,42 @@ interface Card {
   color: Color;
 }
 
-/** todo move to event*/
-interface SomethingHappened {
-  kind: 'SomethingHappened';
+// todo move to event
+export interface GameStarted {
+  kind: 'GameStarted';
 }
 
-/** todo move to command*/
-class DoSomething {}
-class DoThat {}
+// todo move to command
+export interface StartGame {
+  kind: 'StartGame';
+  numberOfPlayer: number;
+  firstCard: Card;
+}
 
-/** state */
-class InitinalState {}
-
-
-type UnoEvent =
-     SomethingHappened;
-
-type UnoCommand = DoSomething | DoThat;
-
-type State = InitinalState;
+// state
+export class InitinalState {
+}
 
 
-let decide = curry((command: UnoCommand, state: State): UnoEvent[] => []);
+export type UnoEvent =
+  GameStarted;
 
-let evolve = curry((state: State, event: UnoEvent) => state);
+export type UnoCommand = StartGame;
+
+export type State = InitinalState;
+
+
+export const decide = curry((command: UnoCommand, state: State): UnoEvent[] => {
+  switch (command.kind) {
+    case ('StartGame'):
+      return ([{
+        kind: 'GameStarted',
+      }]);
+    default:
+      return [];
+  }
+});
+
+export const evolve = curry((state: State, event: UnoEvent) => state);
+
+
