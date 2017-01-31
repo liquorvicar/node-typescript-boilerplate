@@ -1,9 +1,11 @@
 /**
  * Created by krazar on 31/01/2017.
  */
-import { decide, Color, Digit, evolve, UnoEvent, UnoCommand } from '../src/ddd/uno/domain/Domain';
+import { Color, Digit, InitialState, State } from '../src/ddd/uno/domain/Domain';
+import { UnoEvent, evolve } from '../src/ddd/uno/domain/Events';
+import { UnoCommand, decide } from '../src/ddd/uno/domain/Command';
 
-const initState = {
+const initState: State = {
   kind: 'InitialState',
 };
 
