@@ -51,7 +51,7 @@
     "no-unnecessary-bind": true,
     "no-unnecessary-override": true,
     "no-unsafe-finally": true,
-    "no-unused-expression": true,
+    "no-unused-expression": false,
     "no-unused-new": true,
     "no-use-before-declare": true,
     "no-with-statement": true,
@@ -76,7 +76,7 @@
     "export-name": false,
     "function-name": true,
     "import-name": false,
-    "interface-name": [true, "always-prefix"],
+    "interface-name": false,
     "jsdoc-format": true,
     "max-classes-per-file": [true, 3],  // we generally recommend making one public class per file
     "max-file-line-count": [true, 500],
