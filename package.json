@@ -1,5 +1,5 @@
 {
-  "name": "node-typescript-boilerplate",
+  "name": "ts-simple-functional-eventsourcing",
   "version": "0.0.0",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
   "engineStrict": true,
@@ -27,7 +27,11 @@
     "test-only": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "author": "Jakub Synowiec <github@jakubsynowiec.info>",
+  "authors": [
+    "Jakub Synowiec <github@jakubsynowiec.info>",
+    "Andy Clyde <me@andyclyde.com>",
+    "Pierre Marot <marot.pierre@gmail.com>"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

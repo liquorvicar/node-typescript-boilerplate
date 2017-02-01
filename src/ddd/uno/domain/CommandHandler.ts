@@ -31,7 +31,7 @@ interface Append {
   (eventStream: string, version: number, events: UnoEvent[]): Observable<any>;
 }
 
-export const handler = curry((read: Read, append: Append, streamName: string, command: UnoCommand): Observable<EventsVersion> => {
+export const handler = curry((read: Read, append: Append, streamName: string, command: UnoCommand): Promise<any> => {
   const startVersion = 0;
   const initialState: InitialState = {
     kind: 'InitialState',
@@ -48,5 +48,5 @@ export const handler = curry((read: Read, append: Append, streamName: string, co
       streamName,
       finalStateVersion.version,
       decide(command, finalStateVersion.state),
-    ));
+    )).toPromise();
 });

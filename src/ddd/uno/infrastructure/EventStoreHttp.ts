@@ -17,11 +17,13 @@ const client = eventstore.http({
 });
 
 const cleanEventData = omit(['kind']);
-const isMore = (response) => response && response.length && !!(response[response.length - 1].links.find(elm => elm.relation === 'next');
+const isMore = (response) => response
+&& response.length
+&& !!response[response.length - 1].links.find(elm => elm.relation === 'next');
 const lastVersion = (response) => response[response.length - 1].eventNumber;
 
 export const read = (streamName: string, version: number = 0): Observable<EventVersion> => {
-  const request = new BehaviorSubject<number>(0);
+  const request = new BehaviorSubject<number>(version);
 
   return request.mergeMap(v =>
     Observable.fromPromise(
@@ -29,7 +31,6 @@ export const read = (streamName: string, version: number = 0): Observable<EventV
     ),
   )
     .do(response => {
-      console.log(JSON.stringify(response))
       if (isMore(response)) {
         request.next(lastVersion(response));
       } else {
@@ -47,5 +48,8 @@ export const read = (streamName: string, version: number = 0): Observable<EventV
 export const append = (streamName: string, expectedVersion, events: UnoEvent[]) => {
   const eventsWithId = events
     .map(event => eventstore.eventFactory.NewEvent(event.kind, cleanEventData(event)));
-  return Observable.fromPromise(client.writeEvents(streamName, eventsWithId));
+  return Observable.fromPromise(client.writeEvents(streamName, eventsWithId, { expectedVersion }))
+    .do(response => {
+      console.log(JSON.stringify(response));
+    });
 };
