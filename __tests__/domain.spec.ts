@@ -195,7 +195,7 @@ describe('Player cannot play outside of his turn', () => {
     },
     [
       {
-        kind: 'NotPlayerTurn',
+        kind: 'PlayedAtWrongTurn',
         card: { digit: Digit.Five, color: Color.Red },
         player: 2,
       },
@@ -221,7 +221,7 @@ describe('Player cannot play outside of his turn', () => {
     },
     [
       {
-        kind: 'NotPlayerTurn',
+        kind: 'PlayedAtWrongTurn',
         card: { digit: Digit.Six, color: Color.Red },
         player: 1,
       },

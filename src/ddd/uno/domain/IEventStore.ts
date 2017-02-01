@@ -3,4 +3,6 @@
  */
 
 export class IEventStore {
+
+  read
 }

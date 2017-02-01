@@ -23,14 +23,14 @@ export interface InvalidCardPlayed {
   player: number;
 }
 
-export interface NotPlayerTurn {
-  kind: 'NotPlayerTurn'; // we keep the card because this is strategic information
+export interface PlayedAtWrongTurn {
+  kind: 'PlayedAtWrongTurn'; // we keep the card because this is strategic information
   card: Card;
   player: number;
 }
 
 export type UnoEvent =
-  GameStarted | CardPlayed | InvalidCardPlayed | NotPlayerTurn;
+  GameStarted | CardPlayed | InvalidCardPlayed | PlayedAtWrongTurn;
 
 export const evolve = curry((state: State, event: UnoEvent) => {
   switch (event.kind) {

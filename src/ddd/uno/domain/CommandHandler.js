@@ -1,14 +1,21 @@
-"use strict";
 /**
  * Created by krazar on 31/01/2017.
  */
+"use strict";
 const ramda_1 = require("ramda");
-const add = ramda_1.curry((x, y) => x + y);
-class CommandHandler {
-    test() {
-        const inc = add(1);
-        const doubleInc = ramda_1.compose(inc, inc);
-        const five = doubleInc(3);
-        const four = inc(3);
-    }
-}
+const Events_1 = require("./Events");
+const Command_1 = require("./Command");
+exports.handler = ramda_1.curry((read, append, stream, command) => {
+    const startVersion = 0;
+    const initialState = {
+        kind: 'InitialState',
+    };
+    const resultFromRead$ = read('someStream', 0);
+    const stateVersion$ = resultFromRead$
+        .reduce((acc, eventVersion) => ({
+        state: Events_1.evolve(acc.state, eventVersion.event),
+        version: eventVersion.version,
+    }), { state: initialState, version: startVersion });
+    return stateVersion$
+        .mergeMap(finalStateVersion => append(stream, finalStateVersion.version, Command_1.decide(command, finalStateVersion.state)));
+});

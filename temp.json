@@ -1,0 +1,38 @@
+[
+  {
+    "eventId": "fbf4a1a1-b4a3-4dfe-a01f-ec52c34e16e4",
+    "eventType": "event-version",
+    "eventNumber": 0,
+    "data": {
+      "kind": "GameStarted",
+      "numberOfPlayer": 3,
+      "firstCard": {
+        "digit": 2,
+        "color": 0
+      }
+    },
+    "streamId": "uno-game",
+    "isJson": true,
+    "isMetaData": false,
+    "isLinkMetaData": false,
+    "positionEventNumber": 0,
+    "positionStreamId": "uno-game",
+    "title": "0@uno-game",
+    "id": "http://localhost:2113/streams/uno-game/0",
+    "updated": "2017-02-01T10:42:02.417932Z",
+    "author": {
+      "name": "EventStore"
+    },
+    "summary": "event-version",
+    "links": [
+      {
+        "uri": "http://localhost:2113/streams/uno-game/0",
+        "relation": "edit"
+      },
+      {
+        "uri": "http://localhost:2113/streams/uno-game/0",
+        "relation": "alternate"
+      }
+    ]
+  }
+]

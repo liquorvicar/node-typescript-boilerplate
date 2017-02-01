@@ -37,7 +37,7 @@ export const playCard = (command: PlayCard, state: State): UnoEvent[] => {
     case 'Started':
       if (command.player !== state.nextPlayer) {
         return [{
-          kind: 'NotPlayerTurn',
+          kind: 'PlayedAtWrongTurn',
           card: command.card,
           player: command.player,
         }];

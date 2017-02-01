@@ -70,7 +70,7 @@
     "adjacent-overload-signatures": true,
     "array-type": [true, "array"],
     "arrow-parens": false, // for simple functions the parens on arrow functions are not needed
-    "callable-types": true,
+    "callable-types": false,
     "class-name": true,
     "comment-format": false,
     "export-name": false,

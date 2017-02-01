@@ -56,8 +56,11 @@
     ]
   },
   "dependencies": {
+    "geteventstore-promise": "^1.1.21",
     "immutable": "^3.8.1",
     "ramda": "^0.23.0",
-    "tslib": "~1.5.0"
+    "rxjs": "^5.1.0",
+    "tslib": "~1.5.0",
+    "uuid": "^3.0.1"
   }
 }
